@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            background: yellow;
+        }
+        #box {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 100px auto;
+            overflow: hidden;
+            border: 1px solid;
+            border-radius: 8px;
+        }
+        @keyframes rotate {
+            to {
+                transform: rotate(1turn);
+            }
+        }
+        #box::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(to right bottom, transparent, white, transparent);
+            animation: rotate 8s linear infinite;
+        }
+        #box > span {
+            position: absolute;
+            top: 0px;
+            margin: 8px;
+            width: 134px;
+            height: 134px;
+            border-radius: 8px;
+            background-size: cover;
+            background-color: yellow;
+        }
+    </style>
+</head>
+ 
+<body>
+    <div class="yuan">
+
+        <div id="box">
+            <!-- <div class="under"></div> -->
+            <span></span>
+        </div>
+    </div>
+</body>
+ <script>
+    var box = document.getElementById("box");
+    var w = box.offsetWidth;
+    var h = box.offsetHeight; 
+    var s = Math.sqrt(w*w + h*h);
+    console.log("+",s)
+
+    var style=document.createElement('style');
+    style.innerHTML=`.#box::after{width: 200px;height: 200px;}`;
+    document.head.appendChild(style);
+ </script>
+</html>
